@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.blankj.utilcode.util.StringUtils" />
+
+        <variable
+            name="adapter"
+            type="com.czl.module_car.adapter.MyCarAdapter" />
+
+        <variable
+            name="houseName"
+            type="String" />
+
+        <variable
+            name="item"
+            type="com.czl.base.data.bean.CarItem" />
+    </data>
+
+    <com.lihang.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:hl_cornerRadius="5dp"
+        app:hl_layoutBackground="@color/white"
+        app:hl_shadowColor="#0D000000"
+        app:hl_shadowLimit="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingTop="12dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/tv_16_333333"
+                        android:text="@{item.vehicleNo}" />
+
+                    <com.github.nikartm.button.FitButton
+                        android:layout_width="46dp"
+                        android:layout_height="20dp"
+                        android:layout_marginLeft="12dp"
+                        android:gravity="center"
+                        app:fb_backgroundColor="@color/color_00A468"
+                        app:fb_cornerRadius="3dp"
+                        app:fb_shape="rectangle"
+                        app:fb_text="新能源"
+                        app:fb_textColor="#F5F5F5"
+                        app:fb_textSize="12dp"
+                        tools:isVisible="@{item.vehicleNo.length() == 8}" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/btn_green_shape_3"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="2dp"
+                    android:text="@{houseName}"
+                    android:textColor="@color/color_00A468"
+                    android:textSize="12sp"
+                    tools:isVisible="@{!StringUtils.isEmpty(houseName)}" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.github.nikartm.button.FitButton
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_34C759"
+                app:fb_cornerRadius="3dp"
+                app:fb_shape="rectangle"
+                app:fb_text="免费"
+                app:fb_textColor="@color/white"
+                app:fb_textPaddingBottom="2dp"
+                app:fb_textPaddingEnd="5dp"
+                app:fb_textPaddingStart="5dp"
+                app:fb_textPaddingTop="2dp"
+                app:fb_textSize="12dp"
+                tools:isVisible="@{item.cardFree}" />
+
+            <com.github.nikartm.button.FitButton
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_0096FF"
+                app:fb_cornerRadius="3dp"
+                app:fb_shape="rectangle"
+                app:fb_text="月卡生效中"
+                app:fb_textColor="@color/white"
+                app:fb_textPaddingBottom="2dp"
+                app:fb_textPaddingEnd="5dp"
+                app:fb_textPaddingStart="5dp"
+                app:fb_textPaddingTop="2dp"
+                app:fb_textSize="12dp"
+                tools:isVisible="@{!item.cardFree &amp;&amp; item.isCardExpired == 0}" />
+
+            <CheckBox
+                android:id="@+id/cb"
+                style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="@{item.status}"
+                android:scaleX="0.8"
+                android:scaleY="0.8"
+                android:theme="@style/circleCheckBox"
+                tools:rvItemBean="@{item}"
+                tools:onCheckedCommand="@{adapter.checkChangedClick}"
+                tools:isVisible="@{!item.cardFree &amp;&amp; item.isCardExpired != 0 &amp;&amp; adapter.edit}"
+               />
+        </LinearLayout>
+    </com.lihang.ShadowLayout>
+</layout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="adapter"
+            type="com.czl.module_park.adapter.ChoiceCarAdapter" />
+
+        <variable
+            name="data"
+            type="com.czl.base.data.bean.CarItem" />
+
+        <import type="android.view.View"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            style="@style/tv_14_333333"
+            tools:text="鄂AD13651"
+            android:text="@{data.vehicleNo}"/>
+
+        <com.github.nikartm.button.FitButton
+            android:layout_width="46dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="12dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="3dp"
+            app:fb_shape="rectangle"
+            app:fb_text="新能源"
+            tools:isVisible="@{data.vehicleNo.length() == 8}"
+            app:fb_textColor="#F5F5F5"
+            app:fb_textSize="12dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <CheckBox
+            android:id="@+id/cb"
+            style="@style/Widget.AppCompat.CompoundButton.RadioButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:checked="@{data.status}"
+            android:theme="@style/circleCheckBox" />
+    </LinearLayout>
+</layout>

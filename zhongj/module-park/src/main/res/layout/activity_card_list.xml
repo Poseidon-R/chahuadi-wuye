@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_park.viewmodel.CardListViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_common"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            binding:onLoadMoreCommand="@{viewModel.onLoadMoreListener}"
+            binding:onRefreshCommand="@{viewModel.onRefreshListener}">
+
+            <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+                android:id="@+id/ry_common"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="购买月卡"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="16dp"
+            binding:onClickCommand="@{viewModel.onBuyCardClickCommand}" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.blankj.utilcode.util.ObjectUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_car.viewmodel.AddCarViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.lihang.ShadowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:hl_cornerRadius="5dp"
+            app:hl_layoutBackground="@color/white"
+            app:hl_shadowColor="#0D000000"
+            app:hl_shadowLimit="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="14dp"
+                        android:text="请添加真实有效的车牌号"
+                        android:textColor="@color/color_333333"
+                        android:textSize="14sp" />
+
+                    <com.czl.base.view.CarBoardView
+                        android:id="@+id/car_board_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="14dp"
+                    android:paddingRight="20dp"
+                    binding:onClickCommand="@{viewModel.onChoiceRoomClick}">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="请添加与车牌绑定的房间号"
+                            android:textColor="@color/color_333333"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_down"
+                            binding:isVisible="@{!viewModel.onlyOne}" />
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            style="@style/tv_14_00A468"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/dp_8"
+                            android:background="@drawable/corner_border_2"
+                            android:paddingLeft="6dp"
+                            android:paddingTop="3dp"
+                            android:paddingRight="6dp"
+                            android:paddingBottom="3dp"
+                            android:text="@{viewModel.roomName}"
+                            binding:isVisible="@{ObjectUtils.isNotEmpty(viewModel.roomName)}"
+                            binding:text="9djriejf" />
+
+                        <TextView
+                            style="@style/tv_14_999999"
+                            android:layout_centerInParent="true"
+                            android:text="暂无绑定房间号～"
+                            binding:isVisible="@{viewModel.roomName.length() == 0}" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.lihang.ShadowLayout>
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="确认添加"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="14dp"
+            binding:onClickCommand="@{viewModel.onAddClick}" />
+
+    </LinearLayout>
+</layout>

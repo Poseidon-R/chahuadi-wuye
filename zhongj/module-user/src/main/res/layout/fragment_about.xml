@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_user.viewmodel.AboutViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <LinearLayout
+            android:id="@+id/btn_user_info"
+            style="@style/setLinear"
+            binding:onClickCommand="@{viewModel.onVersionClick}">
+
+            <TextView
+                style="@style/setText"
+                android:drawableLeft="@mipmap/u_bb"
+                android:text="当前版本" />
+
+            <TextView
+                style="@style/tv_15_666666"
+                android:layout_marginRight="@dimen/dp_8"
+                android:text="@{viewModel.versionName}" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_right" />
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout
+            android:id="@+id/btn_kefu"
+            style="@style/setLinear"
+            binding:onClickCommand="@{viewModel.onAgreeClick}">
+
+            <TextView
+                style="@style/setText"
+                android:drawableLeft="@mipmap/u_yhxy"
+                android:text="用户协议" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_right" />
+        </LinearLayout>
+
+        <View style="@style/line" />
+
+        <LinearLayout
+            style="@style/setLinear"
+            binding:onClickCommand="@{viewModel.onPrivateClick}">
+
+            <TextView
+                style="@style/setText"
+                android:drawableLeft="@mipmap/u_yszc"
+                android:text="隐私政策" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_right" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

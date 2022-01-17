@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="isSelectMode"
+            type="Boolean" />
+
+        <variable
+            name="isSelected"
+            type="Boolean" />
+
+        <variable
+            name="item"
+            type="String" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="80dp"
+        android:layout_height="33dp"
+        android:id="@+id/fl_root"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@color/color_999999">
+
+        <FrameLayout
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:background="@drawable/work_device_check"
+            android:visibility="@{isSelectMode ? View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:layout_width="11.4dp"
+                android:layout_height="9dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/ic_g"
+                android:visibility="@{isSelected ? View.VISIBLE:View.GONE}" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{item}"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_12" />
+    </FrameLayout>
+
+</layout>

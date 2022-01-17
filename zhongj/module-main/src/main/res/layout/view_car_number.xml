@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lihang.ShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mShadowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    app:hl_cornerRadius="5dp"
+    app:hl_shadowColor="#0D000000"
+    app:hl_shadowLimit="5dp"
+    tools:ignore="ResourceName">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_corner"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/tv_16_333333"
+            android:paddingLeft="10dp"
+            android:paddingTop="14dp"
+            android:text="请添加真实有效的车牌号"
+            android:textStyle="bold" />
+
+        <com.czl.base.view.CarBoardView
+            android:id="@+id/view_car_board"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_f5f5f5" />
+
+
+            <TextView
+                android:id="@+id/btn_query"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:text="查询"
+                android:textColor="@color/color_00A468"
+                android:textSize="16sp" />
+
+    </LinearLayout>
+</com.lihang.ShadowLayout>

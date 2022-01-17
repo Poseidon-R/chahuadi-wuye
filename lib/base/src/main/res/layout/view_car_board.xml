@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <com.sjzn.keyboard.view.InputView
+        android:id="@+id/input_view"
+        style="@style/PWKInputViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        app:pwkInputTextSize="22sp" />
+
+    <com.github.nikartm.button.FitButton
+        android:id="@+id/btn_lock"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        app:fb_backgroundColor="@color/color_1A666666"
+        app:fb_cornerRadius="2dp"
+        app:fb_icon="@mipmap/ic_add"
+        app:fb_iconColor="@color/color_666666"
+        app:fb_iconHeight="12dp"
+        app:fb_iconPosition="top"
+        app:fb_iconWidth="12dp"
+        app:fb_shape="rectangle"
+        app:fb_text="新能源"
+        app:fb_textColor="@color/color_666666"
+        app:fb_textPaddingTop="3dp"
+        app:fb_textSize="12sp" />
+
+</LinearLayout>

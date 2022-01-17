@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/ll_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/iv_avatar"-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="60dp"-->
+<!--            app:lottie_autoPlay="true"-->
+<!--            app:lottie_fileName="load_empty.json"-->
+<!--            app:lottie_loop="true" />-->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-150dp"
+            android:src="@mipmap/empty_park" />
+
+        <TextView
+            android:id="@+id/tv_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无数据"
+            android:layout_marginTop="18dp"
+            android:textColor="@color/color_666666"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/tv_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone"
+            android:text="点击重试" />
+    </LinearLayout>
+</layout>

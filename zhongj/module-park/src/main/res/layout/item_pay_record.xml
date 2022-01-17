@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.czl.base.data.bean.PayRecordListBean.Record" />
+
+        <variable
+            name="adapter"
+            type="com.czl.module_park.adapter.PayRecordAdapter" />
+
+        <import type="com.blankj.utilcode.util.TimeUtils" />
+
+    </data>
+
+
+    <com.lihang.ShadowLayout
+        android:id="@+id/mShadowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:hl_cornerRadius="5dp"
+        app:hl_layoutBackground="@color/white"
+        app:hl_shadowColor="#0D000000"
+        app:hl_shadowLimit="5dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:paddingRight="11dp"
+            android:paddingBottom="10dp"
+            tools:onRvItemCommand="@{adapter.onItemClick}"
+            tools:rvItemBean="@{item}">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_15_666666"
+                    android:text="@{`订单号：`+item.orderNo}"
+                    android:textStyle="bold"
+                    tools:text="订单号：SKT123234433434" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:text="@{item.payResult}"
+                    android:textColor="@color/color_DF3D38"
+                    android:textSize="14sp"
+                    tools:text="支付成功" />
+
+            </LinearLayout>
+
+            <View
+                style="@style/line"
+                android:layout_marginTop="10dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="14dp">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/tv_14_666666"
+                    android:text="@{item.bizType}"
+                    tools:text="产权车管理费" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    style="@style/tv_14_666666"
+                    android:layout_below="@+id/tv_name"
+                    android:layout_marginTop="12dp"
+                    android:text="@{TimeUtils.date2String(item.payTime,`yyyy/MM/dd HH:mm:ss`)}"
+                    tools:text="2021-02-09  12:23:12" />
+
+                <TextView
+                    android:id="@+id/tv_money"
+                    style="@style/tv_14_333333"
+                    android:layout_alignParentRight="true"
+                    android:text="@{item.amount}"
+                    tools:text="1800.00" />
+
+                <TextView
+                    style="@style/tv_14_00A468"
+                    android:layout_below="@+id/tv_money"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="12dp"
+                    android:text="@{item.payType}"
+                    tools:text="线上微信" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.lihang.ShadowLayout>
+</layout>

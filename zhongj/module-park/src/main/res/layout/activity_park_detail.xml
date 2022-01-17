@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_park.viewmodel.ParkDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="40dp"
+            tools:isVisible="@{viewModel.showHasData == 0}">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/empty_park" />
+
+            <TextView
+                style="@style/tv_16_333333"
+                android:layout_marginTop="30dp"
+                android:text="您输入的车牌还没有停车记录" />
+
+            <TextView
+                style="@style/tv_14_333333"
+                android:layout_marginTop="10dp"
+                android:text="请确认车牌是否正确哦～" />
+
+            <com.github.nikartm.button.FitButton
+                style="@style/BtnScreenStyle"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_00A468"
+                app:fb_cornerRadius="8dp"
+                app:fb_rippleColor="#DCEDC8"
+                app:fb_shape="rectangle"
+                app:fb_text="继续查询"
+                app:fb_textColor="@color/white"
+                app:fb_textSize="14dp"
+                tools:onClickCommand="@{viewModel.onBackClick}" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:isVisible="@{viewModel.showHasData == 1}">
+
+            <com.lihang.ShadowLayout
+                android:id="@+id/mShadowLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-5dp"
+                app:hl_cornerRadius="5dp"
+                app:hl_layoutBackground="@color/white"
+                app:hl_shadowColor="#0D000000"
+                app:hl_shadowLimit="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp">
+
+                    <TextView
+                        style="@style/tv_14_333333"
+                        android:text="停车时长" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        tools:text="02：30"
+                        android:text="@{viewModel.stopTime}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <TextView-->
+<!--                            style="@style/tv_12_999999"-->
+<!--                            android:text="小时" />-->
+
+<!--                        <TextView-->
+<!--                            style="@style/tv_12_999999"-->
+<!--                            android:layout_marginLeft="30dp"-->
+<!--                            android:text="分钟" />-->
+<!--                    </LinearLayout>-->
+
+                </LinearLayout>
+            </com.lihang.ShadowLayout>
+
+            <com.lihang.ShadowLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="-10dp"
+                app:hl_cornerRadius="5dp"
+                app:hl_layoutBackground="@color/white"
+                app:hl_shadowColor="#0D000000"
+                app:hl_shadowLimit="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_corner"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/tv_16_333333"
+                            android:text="@{viewModel.vehicleNo}"
+                            android:textStyle="bold"
+                            tools:text="粤A78362746" />
+
+                        <com.github.nikartm.button.FitButton
+                            android:layout_width="46dp"
+                            android:layout_height="20dp"
+                            android:layout_marginLeft="12dp"
+                            android:gravity="center"
+                            tools:isVisible="@{viewModel.vehicleNo.length() == 8}"
+                            app:fb_backgroundColor="@color/color_00A468"
+                            app:fb_cornerRadius="3dp"
+                            app:fb_shape="rectangle"
+                            app:fb_text="新能源"
+                            app:fb_textColor="#F5F5F5"
+                            app:fb_textSize="12dp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/tv_14_666666"
+                            android:text="入场时间：" />
+
+                        <TextView
+                            style="@style/tv_14_333333"
+                            android:layout_marginLeft="5dp"
+                            android:text="@{viewModel.createTime}"
+                            tools:text="2021-19-11  12：22：10" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/tv_14_666666"
+                            android:text="车场名称：" />
+
+                        <TextView
+                            style="@style/tv_14_333333"
+                            android:layout_marginLeft="5dp"
+                            android:text="@{viewModel.areaName}"
+                            tools:text="中建新光城" />
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/line"
+                        android:layout_marginTop="14dp" />
+
+                    <TextView
+                        style="@style/tv_14_00A468"
+                        android:layout_marginTop="17dp"
+                        android:text="@{`需补缴金额：`+viewModel.chargeTotal+`元`}"
+                        tools:text="需补缴金额：10.00元" />
+                </LinearLayout>
+            </com.lihang.ShadowLayout>
+
+            <TextView
+                style="@style/tv_14_666666"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="请付款后15分钟内离场，超时需要补缴停车费哦~" />
+
+            <com.github.nikartm.button.FitButton
+                style="@style/BtnScreenStyle"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_00A468"
+                app:fb_cornerRadius="8dp"
+                app:fb_rippleColor="#DCEDC8"
+                app:fb_shape="rectangle"
+                app:fb_text="立即支付"
+                app:fb_textColor="@color/white"
+                app:fb_textSize="14dp"
+                tools:onClickCommand="@{viewModel.onPayClick}" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

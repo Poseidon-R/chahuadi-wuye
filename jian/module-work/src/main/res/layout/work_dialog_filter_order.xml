@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/pwk_primary_color"
+        android:paddingRight="@dimen/dp_12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="请选择"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="取消"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_order_1"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/work_filter_order_item_background"
+        android:gravity="center"
+        android:text="保养工单"
+        android:textColor="@drawable/work_filter_order_item_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:background="@color/work_color_EEEFF3" />
+
+    <TextView
+        android:id="@+id/tv_order_2"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/work_filter_order_item_background"
+        android:gravity="center"
+        android:text="巡检工单"
+        android:textColor="@drawable/work_filter_order_item_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:background="@color/work_color_EEEFF3" />
+
+    <TextView
+        android:id="@+id/tv_order_3"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/work_filter_order_item_background"
+        android:gravity="center"
+        android:text="维修工单"
+        android:textColor="@drawable/work_filter_order_item_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
+        android:background="@color/work_color_EEEFF3" />
+
+    <TextView
+        android:id="@+id/tv_order_4"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/work_filter_order_item_background"
+        android:gravity="center"
+        android:text="报警工单"
+        android:textColor="@drawable/work_filter_order_item_text_color"
+        android:textSize="@dimen/sp_12" />
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_40"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="@dimen/dp_24"
+        android:background="@drawable/work_radius_primary_10"
+        android:gravity="center"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</LinearLayout>

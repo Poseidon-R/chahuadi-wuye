@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_service.viewmodel.ServiceViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragment.ServiceFragment">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/png_background" />
+
+        <LinearLayout
+            android:id="@+id/ll_menu_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginTop="60dp"
+            android:layout_marginRight="@dimen/dp_15"
+            android:background="@drawable/corner_shape_4"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/tv_16_333333"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:text="物业服务" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_gdgl"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="工单管理"
+                    tools:onClickCommand="@{viewModel.btnReportClick}" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_sqgj"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="业主评价" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_sgby"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="设备保养"
+                    tools:onClickCommand="@{viewModel.btnDeviceTakeCareClick}" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_xj"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="设备巡检"
+                    tools:onClickCommand="@{viewModel.btnDevicePatrolClick}" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_gd"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="工单中心"
+                    tools:onClickCommand="@{viewModel.btnWorkOrderCenterClick}" />
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_xg"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="电子巡更"
+                    tools:onClickCommand="@{viewModel.btnElectronClick}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_15"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_15_333333"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/ic_service_invite"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:text="访客邀约"
+                    tools:onClickCommand="@{viewModel.btnAppointmentClick}" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

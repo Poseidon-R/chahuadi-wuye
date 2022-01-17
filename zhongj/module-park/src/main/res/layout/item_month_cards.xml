@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.lihang.ShadowLayout
+        android:id="@+id/mShadowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:hl_cornerRadius="5dp"
+        app:hl_layoutBackground="@color/white"
+        app:hl_shadowColor="#0D000000"
+        app:hl_shadowLimit="5dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="12dp"
+            android:paddingRight="11dp"
+            android:paddingBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_16_333333"
+                    android:text="@{data.vehicleNo}"
+                    tools:text="京A66666" />
+
+                <com.github.nikartm.button.FitButton
+                    android:layout_width="46dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="12dp"
+                    android:gravity="center"
+                    tools:isVisible="@{data.freeCard}"
+                    app:fb_backgroundColor="@color/color_1A00A468"
+                    app:fb_cornerRadius="3dp"
+                    app:fb_shape="rectangle"
+                    app:fb_text="免费"
+                    app:fb_textColor="@color/color_00A468"
+                    app:fb_textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:orientation="horizontal"
+                    tools:isVisible="@{!data.freeCard}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="剩余"
+                        android:textColor="@color/color_00A468"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{data.restDay}"
+                        android:textColor="@color/color_00A468"
+                        android:textSize="16sp"
+                        tools:text="268" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="天"
+                        android:textColor="@color/color_00A468"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_666666"
+                    android:text="授权期限：" />
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="长期"
+                    tools:isVisible="@{data.freeCard}" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:isVisible="@{!data.freeCard}">
+
+                    <TextView
+                        style="@style/tv_14_333333"
+                        android:text="@{TimeUtils.date2String(data.startDate,`yyyy-MM-dd`)}"
+                        tools:text="2021-03-06 " />
+
+                    <TextView
+                        style="@style/tv_14_666666"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
+                        android:text="至" />
+
+                    <TextView
+                        style="@style/tv_14_333333"
+                        android:text="@{TimeUtils.date2String(data.endDate,`yyyy-MM-dd`)}"
+                        tools:text="2021-03-06 " />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_666666"
+                    android:text="车位类型：" />
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="@{data.cardVehicleType}"
+                    tools:text="星光城" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_12"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_14_666666"
+                    android:text="月卡状态：" />
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="@{data.freeCard ? `免费` : data.cardState}"
+                    tools:text="地下车库A区001" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    style="@style/tv_14_666666"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@{data.cardNo}"
+                    tools:text="YK21070713595845" />
+
+
+                <com.github.nikartm.button.FitButton
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    tools:isVisible="@{!data.freeCard}"
+                    app:fb_borderColor="@color/color_00A468"
+                    app:fb_borderWidth="1dp"
+                    app:fb_cornerRadius="15dp"
+                    app:fb_shape="rectangle"
+                    app:fb_text="去续费"
+                    app:fb_textColor="@color/color_00A468"
+                    app:fb_textSize="14sp"
+                    tools:onRvItemCommand="@{adapter.onRenewClick}"
+                    tools:rvItemBean="@{data}" />
+            </LinearLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </com.lihang.ShadowLayout>
+
+    <data>
+
+        <import type="com.blankj.utilcode.util.TimeUtils" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="adapter"
+            type="com.czl.module_park.adapter.CardAdapter" />
+
+        <variable
+            name="data"
+            type="com.czl.base.data.bean.MonthCardListBean.Data" />
+    </data>
+</layout>

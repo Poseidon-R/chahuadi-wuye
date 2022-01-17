@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_user.viewmodel.UserInfoViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="头像" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_header"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    binding:onClickCommand="@{viewModel.onAvatarClick}"
+                    binding:placeholderRes="@{@drawable/ic_head_default}"
+                    binding:errorRes="@{@drawable/ic_head_default}"
+                    binding:url="@{viewModel.avatarUrl}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="昵称" />
+
+                <EditText
+                    style="@style/editRightStyle"
+                    android:hint="请输入昵称"
+                    android:text="@{viewModel.nickName}"
+                    binding:textChanged="@{viewModel.onNickNameChangeCommand}" />
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="姓名" />
+
+                <EditText
+                    style="@style/editRightStyle"
+                    android:hint="请输入姓名"
+                    android:text="@{viewModel.name}"
+                    binding:textChanged="@{viewModel.onNameChangeCommand}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="性别" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@mipmap/ic_down"
+                    android:drawablePadding="5dp"
+                    android:gravity="right|center_vertical"
+                    android:text="@{viewModel.gender == 0 ? `男` : `女`}"
+                    android:textColor="@color/color_666666"
+                    android:textSize="15sp"
+                    binding:onClickCommand="@{viewModel.onGenderClick}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="@string/phone" />
+
+                <TextView
+                    style="@style/tv_14_999999"
+                    android:text="@{viewModel.phone}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/setLinear">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="身份证" />
+
+                <EditText
+                    style="@style/editRightStyle"
+                    android:hint="请输入身份证"
+                    android:text="@{viewModel.idCard}"
+                    binding:textChanged="@{viewModel.onIdCardChangeCommand}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="生日" />
+
+                <TextView
+                    android:id="@+id/btn_day"
+                    android:layout_width="150dp"
+                    android:layout_height="34dp"
+                    android:drawableRight="@mipmap/ic_down"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical|right"
+                    android:text="@{viewModel.birthday}"
+                    android:textColor="@color/color_666666"
+                    android:textSize="15sp"
+                    binding:onClickCommand="@{viewModel.onBirthdayClick}" />
+
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="邮箱" />
+
+                <EditText
+                    style="@style/editRightStyle"
+                    android:hint="请输入邮箱"
+                    android:text="@{viewModel.email}"
+                    binding:textChanged="@{viewModel.onEmailChangeCommand}" />
+            </LinearLayout>
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:id="@+id/btn_myRoom"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="房间号" />
+
+                <TextView
+                    android:id="@+id/tv_my_room"
+                    style="@style/tv_14_666666"
+                    android:ellipsize="end"
+                    android:maxWidth="200dp"
+                    android:maxLines="1"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/ic_right"
+                    android:text="@{viewModel.roomNum}" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout
+                android:id="@+id/btn_myCar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/useInfoTitleStyle"
+                    android:text="车牌号" />
+
+                <TextView
+                    android:id="@+id/tv_my_car"
+                    style="@style/tv_14_666666"
+                    android:ellipsize="end"
+                    android:maxWidth="200dp"
+                    android:maxLines="1"
+                    android:drawablePadding="5dp"
+                    android:drawableRight="@mipmap/ic_right"
+                    android:text="@{viewModel.carNames}" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp">
+
+            <com.github.nikartm.button.FitButton
+                style="@style/BtnScreenStyle"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_00A468"
+                app:fb_cornerRadius="8dp"
+                app:fb_rippleColor="#DCEDC8"
+                app:fb_shape="rectangle"
+                app:fb_text="保存"
+                app:fb_textColor="@color/white"
+                app:fb_textSize="14dp"
+                binding:onClickCommand="@{viewModel.onSubmitClickCommand}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

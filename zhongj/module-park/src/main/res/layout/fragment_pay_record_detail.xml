@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_park.viewmodel.PayRecordDetailViewModel" />
+
+        <import type="com.blankj.utilcode.util.TimeUtils" />
+
+        <import type="com.blankj.utilcode.util.ObjectUtils" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".RecordDetailActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="订单号：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.orderNo}"
+                tools:text="123456" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="费用类型：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.bizType}"
+                tools:text="临时停车" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="缴费车牌：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.carNo}"
+                tools:text="粤A666888" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="缴费时间：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{TimeUtils.date2String(viewModel.payTime,`yyyy/MM/dd HH:mm:ss`)}"
+                tools:text="2021-04-22  12:22:11" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            tools:isVisible="@{ObjectUtils.isNotEmpty(viewModel.validPeriod)}">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="有效周期：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.validPeriod}"
+                tools:text="2021-10-20 ~ 2021-11-19" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="支付方式：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.payType}"
+                tools:text="线上微信" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/tvTitleStyle"
+                android:text="支付金额：" />
+
+            <TextView
+                style="@style/tvContStyle"
+                android:text="@{viewModel.amount}"
+                tools:text="1800.00" />
+
+        </LinearLayout>
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            android:onClick="@{(x)->viewModel.finish()}"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="返回"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="14dp"
+            tools:isVisible="@{!ObjectUtils.equals(viewModel.payResult,`待支付`)}" />
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_marginTop="70dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="继续支付"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="14dp"
+            tools:isVisible="@{ObjectUtils.equals(viewModel.payResult,`待支付`)}"
+            tools:onClickCommand="@{viewModel.onCopClick}" />
+
+    </LinearLayout>
+</layout>

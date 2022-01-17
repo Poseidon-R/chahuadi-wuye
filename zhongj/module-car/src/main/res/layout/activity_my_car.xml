@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_car.viewmodel.MyCarViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_common"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="70dp"
+            app:srlEnableLoadMore="false"
+            binding:onRefreshCommand="@{viewModel.onRefreshListener}">
+
+            <com.lxj.xpopup.widget.VerticalRecyclerView
+                android:id="@+id/ry_common"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5" />
+
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="新增车牌号"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="14dp"
+            binding:isVisible="@{!viewModel.isEdit()}"
+            binding:onClickCommand="@{viewModel.onActionClick}" />
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_DF3D38"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="删除车牌号"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="14dp"
+            binding:isVisible="@{viewModel.isEdit()}"
+            binding:onClickCommand="@{viewModel.onDeleteCarClick}" />
+    </RelativeLayout>
+
+</layout>

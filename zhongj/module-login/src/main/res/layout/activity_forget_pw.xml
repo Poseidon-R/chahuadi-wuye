@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_login.viewmodel.ForgetPwViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.lihang.ShadowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            app:hl_cornerRadius="5dp"
+            app:hl_shadowColor="#0D000000"
+            app:hl_shadowLimit="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.czl.base.view.RequiredTextView
+                        style="@style/tvTitle"
+                        android:text="@string/phone" />
+
+                    <EditText
+                        style="@style/editNoBgStyle"
+                        android:hint="@string/input_phone"
+                        android:inputType="phone"
+                        binding:textChanged="@{viewModel.onPhoneChangeCommand}" />
+                </LinearLayout>
+
+                <View style="@style/line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.czl.base.view.RequiredTextView
+                        style="@style/tvTitle"
+                        android:text="@string/code" />
+
+                    <EditText
+                        style="@style/editNoBgStyle"
+                        android:hint="@string/input_phone_code"
+                        android:inputType="number"
+                        binding:textChanged="@{viewModel.onCodeChangeCommand}" />
+
+                    <com.czl.base.view.CountdownView
+                        android:id="@+id/code_btn"
+                        style="@style/sendCodeStyle"
+                        android:text="@string/phone_code"
+                        binding:onClickCommand="@{viewModel.onCodeClickCommand}" />
+                </LinearLayout>
+
+                <View style="@style/line" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.czl.base.view.RequiredTextView
+                        style="@style/tvTitle"
+                        android:text="@string/new_pwd" />
+
+                    <EditText
+                        style="@style/editNoBgStyle"
+                        android:hint="@string/input_new_pwd"
+                        android:inputType="textPassword"
+                        binding:textChanged="@{viewModel.onPwdChangeCommand}" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </com.lihang.ShadowLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:text="密码长度在8位到12位，必须包含数字、字母"
+            android:textColor="@color/color_999999"
+            android:textSize="12sp" />
+
+        <com.github.nikartm.button.FitButton
+            style="@style/BtnScreenStyle"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            app:fb_backgroundColor="@color/color_00A468"
+            app:fb_cornerRadius="8dp"
+            app:fb_rippleColor="#DCEDC8"
+            app:fb_shape="rectangle"
+            app:fb_text="@string/confirm"
+            app:fb_textColor="@color/white"
+            app:fb_textSize="16dp"
+            binding:onClickCommand="@{viewModel.btnSubmitClick}" />
+
+
+    </LinearLayout>
+</layout>

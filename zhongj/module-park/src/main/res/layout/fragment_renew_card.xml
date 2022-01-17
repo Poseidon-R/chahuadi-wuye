@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.czl.base.util.FormUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_park.viewmodel.RenewCardViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".RenewCardActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@mipmap/bg_renew_card"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingTop="18dp"
+            android:paddingBottom="18dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.restDay}"
+                    android:textColor="@color/white"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    tools:text="20" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="天"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="月卡剩余天数"
+                android:textColor="@color/color_A6FFFFFF"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:gravity="bottom"
+                android:text="@{`授权期限 `+ viewModel.startTime +  ` 至 `+ viewModel.endTime}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="授权期限 2021-04-06 至 2021-08-08" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <LinearLayout style="@style/horLinearStyle">
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="月卡价格" />
+
+                <TextView
+                    style="@style/tv_16_333333"
+                    android:layout_marginLeft="30dp"
+                    android:text="@{FormUtils.INSTANCE.formatMoney(viewModel.price)}"
+                    tools:text="300" />
+
+                <TextView
+                    style="@style/tv_14_666666"
+                    android:layout_marginTop="1dp"
+                    android:text="元" />
+            </LinearLayout>
+
+            <View style="@style/line" />
+
+            <LinearLayout style="@style/horLinearStyle">
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="购买数量" />
+
+                <com.czl.module_park.view.quantitizer.HorizontalQuantitizer
+                    android:id="@+id/h_q"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp" />
+            </LinearLayout>
+
+            <View
+                style="@style/line"
+                android:visibility="gone" />
+
+            <LinearLayout
+                style="@style/horLinearStyle"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/tv_14_333333"
+                    android:text="开始日期" />
+
+                <TextView
+                    style="@style/tv_14_999999"
+                    android:layout_marginLeft="30dp"
+                    android:text="@{viewModel.startTime}"
+                    tools:text="2021-06-06" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/tv_16_333333"
+                    android:text="合计：" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="@{FormUtils.INSTANCE.formatMoney(viewModel.totalAmount)}"
+                    android:textColor="@color/color_00A468"
+                    android:textSize="25sp"
+                    tools:text="300" />
+
+                <TextView
+                    style="@style/tv_16_333333"
+                    android:text="元" />
+            </LinearLayout>
+
+            <com.github.nikartm.button.FitButton
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/color_00A468"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_00A468"
+                app:fb_rippleColor="#DCEDC8"
+                app:fb_shape="rectangle"
+                app:fb_text="立即支付"
+                app:fb_textColor="@color/white"
+                app:fb_textSize="18sp"
+                tools:isEnabled="@{viewModel.canPay}"
+                tools:onClickCommand="@{viewModel.onPayClick}" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

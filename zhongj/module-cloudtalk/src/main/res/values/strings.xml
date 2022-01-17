@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">module-cloudtalk</string>
+    <string name="cloud_talk_tip1">与%s对讲中</string>
+    <string name="cloud_talk_tip2">接听失败，房间号为空</string>
+    <string name="cloud_talk_tip3">开锁成功</string>
+    <string name="cloud_talk_tip4">网络异常,通信失败...</string>
+    <string name="cloud_talk_tip5">网络异常,建立连接失败...</string>
+    <string name="cloud_talk_tip6">建立连接失败...</string>
+    <string name="cloud_talk_tip7">对方网络异常,通信失败...</string>
+    <string name="cloud_talk_tip8">对方已挂断</string>
+    <string name="cloud_talk_tip9">对方占线，通信失败...</string>
+    <string name="cloud_talk_tip10">正在挂断,请稍后...</string>
+    <string name="cloud_talk_tip11">当前通话对方网络不佳</string>
+    <string name="cloud_talk_tip12">当前通话您的网络不佳</string>
+    <string name="cloud_talk_tip13">其它手机已接听</string>
+    <string name="cloud_talk_tip14">等待接听：%s</string>
+    <string name="cloud_talk_tip15">连接已断开</string>
+    <string name="cloud_talk_tip16">通话时间：%s</string>
+    <string name="cloud_talk_tip17">没有权限，请到设置中打开麦克风和摄像头权限</string>
+    <string name="cloud_talk_tip18">操作太频繁，请稍后再试</string>
+    <string name="cloud_talk_tip19">再按一次退出视频对讲</string>
+</resources>

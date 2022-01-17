@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_work.viewModel.WorkViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".fragment.WorkFragment">
+
+            <View
+                android:id="@+id/view_bg"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title_1"
+                style="@style/tv_14_333333"
+                android:layout_marginStart="@dimen/dp_12"
+                android:layout_marginTop="@dimen/dp_12"
+                android:text="当前工单总览"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@id/view_bg"
+                app:layout_constraintLeft_toLeftOf="@id/tv_title_1">
+
+                <com.czl.base.widget.PieChartView
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    app:setChartViewData="@{viewModel.data}"
+                    app:textSize="13sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.orderTotal}"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp_22" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="工单总数"
+                        android:textColor="@color/color_666666"
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/work_cir_999"
+                app:layout_constraintBottom_toBottomOf="@id/tv_1"
+                app:layout_constraintRight_toLeftOf="@id/tv_1"
+                app:layout_constraintTop_toTopOf="@id/tv_1" />
+
+            <TextView
+                android:id="@+id/tv_1"
+                style="@style/tv_11_666666"
+                android:layout_width="86dp"
+                android:layout_marginTop="82dp"
+                android:layout_marginRight="10dp"
+                android:text="@{viewModel.waitingOrderTotal}"
+                app:layout_constraintBottom_toTopOf="@id/tv_2"
+                app:layout_constraintRight_toRightOf="@id/view_bg"
+                app:layout_constraintTop_toTopOf="@id/view_bg"
+                tools:text="待接单 1" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/work_cir_3ecc98"
+                app:layout_constraintBottom_toBottomOf="@id/tv_2"
+                app:layout_constraintRight_toLeftOf="@id/tv_2"
+                app:layout_constraintTop_toTopOf="@id/tv_2" />
+
+            <TextView
+                android:id="@+id/tv_2"
+                style="@style/tv_11_666666"
+                android:layout_width="86dp"
+                android:layout_marginRight="10dp"
+                android:text="@{viewModel.pendingOrderTotal}"
+                app:layout_constraintBottom_toTopOf="@id/tv_3"
+                app:layout_constraintRight_toRightOf="@id/view_bg"
+                app:layout_constraintTop_toBottomOf="@id/tv_1"
+                tools:text="处理中 2" />
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/work_cir_00a468"
+                app:layout_constraintBottom_toBottomOf="@id/tv_3"
+                app:layout_constraintRight_toLeftOf="@id/tv_3"
+                app:layout_constraintTop_toTopOf="@id/tv_3" />
+
+            <TextView
+                android:id="@+id/tv_3"
+                style="@style/tv_11_666666"
+                android:layout_width="86dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="45dp"
+                android:text="@{viewModel.completeOrderTotal}"
+                app:layout_constraintBottom_toBottomOf="@id/view_bg"
+                app:layout_constraintRight_toRightOf="@id/view_bg"
+                tools:text="已完成 7" />
+
+            <LinearLayout
+                android:id="@+id/ll_order_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="工单平均完成时长"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/sp_14" />
+
+                <com.cooltechworks.views.shimmer.ShimmerRecyclerView
+                    android:id="@+id/ry_common"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp_12"
+                android:paddingTop="@dimen/dp_12"
+                android:paddingRight="@dimen/dp_12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_order_time">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="工单平均完成时长"
+                        android:textColor="@color/color_333333"
+                        android:textSize="@dimen/sp_14" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.0" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="近7天"
+                        app:onClickCommand="@{viewModel.btn1Click}"
+                        android:textColor="@{viewModel.type == 1?@color/pwk_primary_color:@color/color_666666}"
+                        android:textSize="@dimen/sp_12" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:background="@color/color_666666" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="近30天"
+                        app:onClickCommand="@{viewModel.btn2Click}"
+                        android:textColor="@{viewModel.type == 2?@color/pwk_primary_color:@color/color_666666}"
+                        android:textSize="@dimen/sp_12" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/dp_4"
+                        android:layout_marginRight="@dimen/dp_4"
+                        android:background="@color/color_666666" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="近12月"
+                        app:onClickCommand="@{viewModel.btn3Click}"
+                        android:textColor="@{viewModel.type == 3?@color/pwk_primary_color:@color/color_666666}"
+                        android:textSize="@dimen/sp_12" />
+                </LinearLayout>
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barchart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

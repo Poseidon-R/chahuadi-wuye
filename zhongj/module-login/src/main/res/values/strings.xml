@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">module-login</string>
+    <string name="secret">
+        我已阅读并同意
+        <a href="">《插花地用户协议》</a>
+        和
+        <a href="">《插花地隐私政策》</a>
+    </string>
+    <string name="privacy_tips_key1">《用户协议》</string>
+    <string name="privacy_tips_key2">《隐私政策》</string>
+    <string name="privacy_tips">欢迎使用罗湖棚改！为了保护您的隐私和使用安全，请您务必仔细阅读我们的《用户协议》和《隐私政策》。在确认充分理解并同意后再开始使用此应用。感谢！</string>
+</resources>

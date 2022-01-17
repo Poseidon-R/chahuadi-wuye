@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.czl.module_login.viewmodel.LoginViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:background="@mipmap/icon_login_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="278dp"
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/icon_username"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="@string/input_phone"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:text="@={viewModel.phone}"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="16sp" />
+                <ImageView
+                    android:visibility="@{viewModel.phone.length()==0?View.GONE:View.VISIBLE}"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    binding:onClickCommand="@{viewModel.onPhoneCleanClickCommand}"
+                    android:src="@mipmap/icon_text_clean"
+                    android:layout_width="@dimen/dp_18"
+                    android:layout_height="@dimen/dp_18"/>
+            </RelativeLayout>
+
+            <View
+                style="@style/line"
+                android:layout_marginHorizontal="35dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="18dp">
+
+                <EditText
+                    android:id="@+id/et_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:drawableLeft="@mipmap/icon_password"
+                    android:drawablePadding="@dimen/dp_10"
+                    android:hint="@string/input_pwd"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.pwd}"
+                    android:textColorHint="@color/color_999999"
+                    android:textSize="16sp" />
+
+                <CheckBox
+                    android:id="@+id/cb_password_eye"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:button="@drawable/check_box_login_password_eye"
+                    android:theme="@style/circleCheckBox" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_18"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:layout_toLeftOf="@+id/cb_password_eye"
+                    android:src="@mipmap/icon_text_clean"
+                    binding:onClickCommand="@{viewModel.onPwdCleanClickCommand}"
+                    android:visibility="@{viewModel.pwd.length()==0?View.GONE:View.VISIBLE}" />
+            </RelativeLayout>
+
+            <View
+                style="@style/line"
+                android:layout_marginHorizontal="35dp" />
+
+            <RelativeLayout
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp">
+
+                <CheckBox
+                    android:id="@+id/cb_secret"
+                    android:layout_width="12dp"
+                    android:layout_height="@dimen/dp_18"
+                    android:layout_marginRight="5dp"
+                    android:button="@drawable/check_box_login"
+                    android:gravity="center"
+                    android:theme="@style/circleCheckBox"
+                    binding:onCheckedChangedCommand="@{viewModel.onCheckChangeClick}" />
+
+                <com.mpt.android.stv.SpannableTextView
+                    android:id="@+id/tv_secret"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/cb_secret" />
+            </RelativeLayout>
+
+            <com.github.nikartm.button.FitButton
+                android:id="@+id/btn_login"
+                style="@style/BtnScreenStyle"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                app:fb_backgroundColor="@color/color_00A468"
+                app:fb_cornerRadius="8dp"
+                app:fb_rippleColor="#DCEDC8"
+                app:fb_shape="rectangle"
+                app:fb_text="登录"
+                app:fb_textColor="@color/white"
+                app:fb_textSize="16dp"
+                binding:onClickCommand="@{viewModel.btnLoginClick}" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="40dp">
+
+                <TextView
+                    style="@style/tv_16_666666"
+                    android:text="忘记密码？"
+                    android:textColor="@color/md_theme_red"
+                    binding:onClickCommand="@{viewModel.forgetPwdClickCommand}" />
+
+                <CheckBox
+                    android:checked="@={viewModel.isRememberPwd}"
+                    android:id="@+id/btn_register"
+                    style="@style/tv_16_00A468"
+                    android:layout_alignParentRight="true"
+                    android:button="@drawable/check_box_login"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="3dp"
+                    android:text="记住密码"
+                    android:theme="@style/circleCheckBox" />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="123dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/tv_other"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+            <TextView
+                android:id="@+id/tv_other"
+                android:layout_centerInParent="true"
+                android:textSize="15sp"
+                android:textColor="@color/color_999999"
+                android:text="其他登陆方式"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <View
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="35dp"
+                android:layout_toRightOf="@+id/tv_other"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginBottom="53dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@mipmap/icon_weixin"
+                android:layout_width="44dp"
+                android:layout_height="44dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

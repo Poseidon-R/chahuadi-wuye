@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.czl.base.base.BaseViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <com.lihang.ShadowLayout
+        android:id="@+id/ShadowLayoutHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:hl_shadowColor="#2a000000"
+        app:hl_shadowHiddenLeft="true"
+        app:hl_shadowHiddenRight="true"
+        app:hl_shadowHiddenTop="true"
+        app:hl_shadowLimit="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:gravity="center"
+                android:onClick="@{(x)->viewModel.finish()}"
+                android:paddingStart="@dimen/dp_15"
+                android:paddingEnd="@dimen/dp_15"
+                tools:isVisible="@{viewModel.btnBackVisibility.equals(`1`)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@mipmap/ic_back_black" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_contentTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLength="10"
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                android:singleLine="true"
+                android:text="@{viewModel.tvTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_20"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.scrollToTopCommand}"
+                tools:text="这是标题这是标题这是标题这是标题这是标题" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/toolbar_right_img"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="?actionBarSize"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dp_10"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.ivToolbarIconOnClick}"
+                binding:src="@{viewModel.ivToolbarIconRes}"
+                tools:src="@drawable/ic_setting" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_right_text"
+                android:layout_width="wrap_content"
+                android:layout_height="?actionBarSize"
+                android:gravity="center"
+                android:maxLength="6"
+                android:padding="@dimen/dp_10"
+                android:text="@{viewModel.toolbarRightText}"
+                android:textColor="@color/black"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                binding:onClickCommand="@{viewModel.ivToolbarIconOnClick}"
+                tools:text="设置" />
+
+
+            <View
+                android:id="@+id/toolbarShadow"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@drawable/toolbar_shad"
+                app:layout_constraintTop_toBottomOf="@id/toolbar_contentTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.lihang.ShadowLayout>
+</layout>

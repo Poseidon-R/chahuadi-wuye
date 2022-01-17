@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="String" />
+    </data>
+
+    <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="88dp"
+        android:id="@+id/iv_pic"
+        android:layout_height="88dp"
+        android:layout_marginRight="@dimen/dp_12"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_head_default" />
+</layout>
